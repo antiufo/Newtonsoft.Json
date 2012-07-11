@@ -112,7 +112,9 @@ namespace Newtonsoft.Json.Serialization
         new DataTableConverter(),
 #endif
         new KeyValuePairConverter(),
+#if !LITE
         new BsonObjectIdConverter()
+#endif
       };
 
     private static Dictionary<ResolverContractKey, JsonContract> _sharedContractCache;
@@ -374,7 +376,7 @@ namespace Newtonsoft.Json.Serialization
       }
       else if (contract.MemberSerialization == MemberSerialization.Fields)
       {
-#if !(SILVERLIGHT || NETFX_CORE || PORTABLE)
+#if !(SILVERLIGHT || NETFX_CORE || PORTABLE || LITE)
         // mimic DataContractSerializer behaviour and create uninitialized object when populating fields
         contract.DefaultCreator = contract.GetUninitializedObject;
 #endif
