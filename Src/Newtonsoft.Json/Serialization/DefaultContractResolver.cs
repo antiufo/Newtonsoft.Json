@@ -39,7 +39,9 @@ using System.Runtime.Serialization;
 #if !(NETFX_CORE || PORTABLE)
 using System.Security.Permissions;
 #endif
+#if !LITE
 using System.Xml.Serialization;
+#endif
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Utilities;
 using Newtonsoft.Json.Linq;
@@ -108,8 +110,10 @@ namespace Newtonsoft.Json.Serialization
 #endif
 #if !(SILVERLIGHT || NETFX_CORE || PORTABLE)
         new BinaryConverter(),
+#if !LITE
         new DataSetConverter(),
         new DataTableConverter(),
+#endif
 #endif
         new KeyValuePairConverter(),
 #if !LITE

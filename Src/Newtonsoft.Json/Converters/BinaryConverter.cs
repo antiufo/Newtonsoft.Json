@@ -25,7 +25,9 @@
 
 #if !(SILVERLIGHT || NETFX_CORE || PORTABLE)
 using System;
+#if !LITE
 using System.Data.SqlTypes;
+#endif
 using System.Globalization;
 using Newtonsoft.Json.Utilities;
 using System.Collections.Generic;
@@ -76,8 +78,10 @@ namespace Newtonsoft.Json.Converters
         return binary.ToArray();
       }
 #endif
+#if !LITE
       if (value is SqlBinary)
         return ((SqlBinary) value).Value;
+#endif
 
       throw new JsonSerializationException("Unexpected value type when writing binary: {0}".FormatWith(CultureInfo.InvariantCulture, value.GetType()));
     }
@@ -128,9 +132,10 @@ namespace Newtonsoft.Json.Converters
         return Activator.CreateInstance(t, data);
 #endif
 
+#if !LITE
       if (t == typeof(SqlBinary))
         return new SqlBinary(data);
-
+#endif
       throw JsonSerializationException.Create(reader, "Unexpected object type when writing binary: {0}".FormatWith(CultureInfo.InvariantCulture, objectType));
     }
 
@@ -171,10 +176,10 @@ namespace Newtonsoft.Json.Converters
       if (objectType.AssignableToTypeName(BinaryTypeName))
         return true;
 #endif
-
+#if !LITE
       if (objectType == typeof(SqlBinary) || objectType == typeof(SqlBinary?))
         return true;
-
+#endif
       return false;
     }
   }

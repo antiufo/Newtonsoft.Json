@@ -47,7 +47,7 @@ namespace Newtonsoft.Json.Utilities
 #endif
     }
 
-#if !(NETFX_CORE || PORTABLE)
+#if !(NETFX_CORE || PORTABLE || LITE)
     public static XmlDateTimeSerializationMode ToSerializationMode(DateTimeKind kind)
     {
       switch (kind)
