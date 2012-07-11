@@ -62,7 +62,7 @@ namespace Newtonsoft.Json.Serialization
     public const string SpecifiedPostfix = "Specified";
 
     private static readonly ThreadSafeStore<ICustomAttributeProvider, Type> JsonConverterTypeCache = new ThreadSafeStore<ICustomAttributeProvider, Type>(GetJsonConverterTypeFromAttribute);
-#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE)
+#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE || LITE)
     private static readonly ThreadSafeStore<Type, Type> AssociatedMetadataTypesCache = new ThreadSafeStore<Type, Type>(GetAssociateMetadataTypeFromAttribute);
 
     private const string MetadataTypeAttributeTypeName =
@@ -241,7 +241,7 @@ namespace Newtonsoft.Json.Serialization
     }
 #endif
 
-#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE)
+#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE || LITE)
     private static Type GetAssociatedMetadataType(Type type)
     {
       return AssociatedMetadataTypesCache.Get(type);
@@ -286,7 +286,7 @@ namespace Newtonsoft.Json.Serialization
     {
       T attribute;
 
-#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE)
+#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE || LITE)
       Type metadataType = GetAssociatedMetadataType(type);
       if (metadataType != null)
       {
@@ -314,7 +314,7 @@ namespace Newtonsoft.Json.Serialization
     {
       T attribute;
 
-#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE)
+#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE || LITE)
       Type metadataType = GetAssociatedMetadataType(memberInfo.DeclaringType);
       if (metadataType != null)
       {

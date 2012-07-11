@@ -99,7 +99,7 @@ namespace Newtonsoft.Json.Serialization
     }
     private static readonly IList<JsonConverter> BuiltInConverters = new List<JsonConverter>
       {
-#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE)
+#if !(SILVERLIGHT || NET20 || NETFX_CORE || PORTABLE || LITE)
         new EntityKeyMemberConverter(),
 #endif
 #if !(NET35 || NET20 || WINDOWS_PHONE || PORTABLE)
@@ -310,7 +310,7 @@ namespace Newtonsoft.Json.Serialization
           }
         }
 
-#if !PocketPC && !SILVERLIGHT && !NET20
+#if !PocketPC && !SILVERLIGHT && !NET20 && !LITE
         Type match;
         // don't include EntityKey on entities objects... this is a bit hacky
         if (objectType.AssignableToTypeName("System.Data.Objects.DataClasses.EntityObject", out match))
@@ -330,7 +330,7 @@ namespace Newtonsoft.Json.Serialization
       return serializableMembers;
     }
 
-#if !PocketPC && !SILVERLIGHT && !NET20
+#if !PocketPC && !SILVERLIGHT && !NET20 && !LITE
     private bool ShouldSerializeEntityMember(MemberInfo memberInfo)
     {
       PropertyInfo propertyInfo = memberInfo as PropertyInfo;
