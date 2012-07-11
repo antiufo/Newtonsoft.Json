@@ -114,7 +114,7 @@ namespace Newtonsoft.Json.Serialization
     }
 #endif
 
-#if !PocketPC && !NET20
+#if !PocketPC && !NET20 && !LITE
     public static DataContractAttribute GetDataContractAttribute(Type type)
     {
       // DataContractAttribute does not have inheritance
@@ -170,7 +170,7 @@ namespace Newtonsoft.Json.Serialization
       if (objectAttribute != null)
         return objectAttribute.MemberSerialization;
 
-#if !PocketPC && !NET20
+#if !PocketPC && !NET20 && !LITE
       DataContractAttribute dataContractAttribute = GetDataContractAttribute(objectType);
       if (dataContractAttribute != null)
         return MemberSerialization.OptIn;

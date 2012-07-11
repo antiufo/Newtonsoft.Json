@@ -30,7 +30,9 @@ using System.Globalization;
 using System.Threading.Tasks;
 #endif
 using Newtonsoft.Json.Utilities;
+#if !LITE
 using System.Xml;
+#endif
 using Newtonsoft.Json.Converters;
 using System.Text;
 #if !NET20 && (!SILVERLIGHT || WINDOWS_PHONE) && !PORTABLE && !LITE

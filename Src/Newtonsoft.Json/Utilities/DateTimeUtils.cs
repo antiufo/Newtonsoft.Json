@@ -24,7 +24,9 @@
 #endregion
 
 using System;
+#if !LITE
 using System.Xml;
+#endif
 using System.Globalization;
 
 namespace Newtonsoft.Json.Utilities

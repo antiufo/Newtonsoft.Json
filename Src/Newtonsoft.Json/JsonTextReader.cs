@@ -28,7 +28,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.IO;
+#if !LITE
 using System.Xml;
+#endif
 using System.Globalization;
 using Newtonsoft.Json.Utilities;
 
