@@ -23,12 +23,12 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-#if (!(SILVERLIGHT || PORTABLE) || WINDOWS_PHONE)
+#if (!(SILVERLIGHT || PORTABLE) || WINDOWS_PHONE) && !LITE
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
-#if !NET20
+#if !NET20 && !LITE
 using System.Xml.Linq;
 #endif
 using Newtonsoft.Json.Utilities;

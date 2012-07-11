@@ -33,7 +33,7 @@ using Newtonsoft.Json.Utilities;
 using System.Xml;
 using Newtonsoft.Json.Converters;
 using System.Text;
-#if !NET20 && (!SILVERLIGHT || WINDOWS_PHONE) && !PORTABLE
+#if !NET20 && (!SILVERLIGHT || WINDOWS_PHONE) && !PORTABLE && !LITE
 using System.Xml.Linq;
 #endif
 #if NETFX_CORE
@@ -1039,7 +1039,7 @@ namespace Newtonsoft.Json
     }
 #endif
 
-#if !(SILVERLIGHT || PORTABLE || NETFX_CORE)
+#if !(SILVERLIGHT || PORTABLE || NETFX_CORE || LITE)
     /// <summary>
     /// Serializes the XML node to a JSON string.
     /// </summary>
@@ -1118,7 +1118,7 @@ namespace Newtonsoft.Json
     }
 #endif
 
-#if !NET20 && (!(SILVERLIGHT || PORTABLE) || WINDOWS_PHONE)
+#if !NET20 && (!(SILVERLIGHT || PORTABLE) || WINDOWS_PHONE) && !LITE
     /// <summary>
     /// Serializes the <see cref="XNode"/> to a JSON string.
     /// </summary>
