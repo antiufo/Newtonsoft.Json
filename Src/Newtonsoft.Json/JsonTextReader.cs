@@ -584,6 +584,23 @@ namespace Newtonsoft.Json
                 writeChar = currentChar;
                 charPos++;
                 break;
+              case 'x':
+                charPos++;
+                _charPos = charPos;
+                if (EnsureChars(2, true))
+                {
+                    string hexValues = new string(_chars, charPos, 2);
+                    char hexChar = Convert.ToChar(int.Parse(hexValues, NumberStyles.HexNumber, NumberFormatInfo.InvariantInfo));
+                    writeChar = hexChar;
+
+                    charPos += 2;
+                }
+                else
+                {
+                    _charPos = charPos;
+                    throw JsonReaderException.Create(this, "Unexpected end while parsing \\xNN escape sequence.");
+                }
+                break;
               case 'u':
                 charPos++;
                 _charPos = charPos;
