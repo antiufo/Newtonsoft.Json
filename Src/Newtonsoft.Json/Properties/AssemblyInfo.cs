@@ -46,7 +46,11 @@ using System.Security;
 [assembly: AssemblyTitle("Json.NET .NET 2.0")]
 [assembly: AllowPartiallyTrustedCallers]
 #elif NET35
+#if LITE
+[assembly: AssemblyTitle("Json.NET .NET 3.5 Lite")]
+#else
 [assembly: AssemblyTitle("Json.NET .NET 3.5")]
+#endif
 [assembly: AllowPartiallyTrustedCallers]
 #else
 [assembly: AssemblyTitle("Json.NET")]
